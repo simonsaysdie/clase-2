@@ -25,6 +25,9 @@ defmodule Clase2.Router do
 
     get "/bank", BankController, :register
     post "/bank", BankController, :register
+
+    get "/card", CardController, :register
+    post "/card", CardController, :register
   end
 
   # Other scopes may use custom stacks.

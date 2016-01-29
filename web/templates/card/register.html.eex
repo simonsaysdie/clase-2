@@ -1,0 +1,16 @@
+<head>
+<body>
+
+	<%= form_for @card, card_path(@conn, :register), fn f -> %>
+  		
+  		<br>
+  		<%= text_input f, :name %><br>
+	<br>
+	<br>
+	<br>
+	   
+    <%= submit "Register!" %>  
+	<% end %>
+
+</body>
+</head>

@@ -4,6 +4,7 @@ defmodule Clase2.RegistrationController do
   alias Clase2.Bank
   alias Clase2.User
   alias Clase2.Repo
+  alias Clase2.Card
 
   def register(conn, {who, changeset}) do
   	if changeset.valid? do  
@@ -33,6 +34,17 @@ defmodule Clase2.RegistrationController do
   	    send_registry_error(conn, {:bank, changeset})
   	  :else ->
   	    render(conn, "register.html", bank: changeset)
+    end
+  end
+
+  def write_registry(conn, {:card, changeset}) do
+  	case Repo.insert(changeset) do
+  	  {:ok, card} ->
+  	    redirect conn, to: "/plazas"
+  	  {:error, card} ->
+  	    send_registry_error(conn, {:card, changeset})
+  	  :else ->
+  	    render(conn, "register.html", card: changeset)
     end
   end
 
