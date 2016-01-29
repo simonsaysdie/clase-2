@@ -1,23 +1,26 @@
 <head>
 <body>
 
-	<form>
+	<%= form_for @user, user_path(@conn, :register), fn f -> %>
   		First name:<br>
-  		<input type="text" name="name"><br>
-  		number:<br>
-  		<input type="number" name="number">
-	<br>
+  		<%= text_input f, :name %><br>
 
-	    <input type="checkbox" name="mexican"> Mexican?
+  		number:<br>
+  		<%= text_input f, :name, type: "number" %>
 	<br>
 	<br>
-  		<input type="radio" name="gender"> F
-    <br>
-    	<input type="radio" name="gender"> M
-    <br>
-    	<input type="radio" name="gender"> Prefer not to say
-   
-	</form>
+        <%= checkbox f, :is_mexican %> Mexican?
+	<br>
+	<br>
+	    <label>F</label>
+	    <%= radio_button f, :gender, "F" %>
+	    <label>M</label>
+	    <%= radio_button f, :gender, "M" %>
+	    <label>NO</label>
+	    <%= radio_button f, :gender, "NO" %>
+  	<br>
+    <%= submit "Register!" %>  
+	<% end %>
 
 </body>
 </head>
