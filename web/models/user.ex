@@ -5,11 +5,12 @@ defmodule Clase2.User do
     field :age, :integer
     field :name, :string
     field :is_mexican, :boolean, default: false
+    field :gender, :string
 
     timestamps
   end
 
-  @required_fields ~w(age name)
+  @required_fields ~w(age name gender)
   @optional_fields ~w(is_mexican)
 
   @doc """
