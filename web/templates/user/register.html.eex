@@ -6,7 +6,7 @@
   		<%= text_input f, :name %><br>
 
   		number:<br>
-  		<%= text_input f, :name, type: "number" %>
+  		<%= text_input f, :age, type: "number" %>
 	<br>
 	<br>
         <%= checkbox f, :is_mexican %> Mexican?
