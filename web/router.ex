@@ -19,6 +19,9 @@ defmodule Clase2.Router do
     get "/", PageController, :index
 
     get "/plazas", PageController, :plazas
+
+    get "/register", UserController, :register
+    post "/register", UserController, :register
   end
 
   # Other scopes may use custom stacks.
