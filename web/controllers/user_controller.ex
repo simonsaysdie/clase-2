@@ -3,33 +3,14 @@ defmodule Clase2.UserController do
 
   alias Clase2.User
   alias Clase2.Repo
+  alias Clase2.RegistrationController, as: Registration
 
   def register(conn, %{"user" => user_params}) do
   	changeset = User.changeset(%User{}, user_params)
 
-  	if changeset.valid? do  
-	  write_registry(conn, changeset)
-  	else
-  	  send_registry_error(conn, changeset)
-  	end
+  	Registration.register(conn, {:user, changeset})
   end
 
-  defp send_registry_error(conn, changeset) do
-  	conn
-    |> put_flash(:error, "Please insert valid data")
-  	|> render("register.html", user: changeset)
-  end
-
-  defp write_registry(conn, changeset) do
-  	case Repo.insert(changeset) do
-  	  {:ok, user} ->
-  	    redirect conn, to: "/plazas"
-  	  {:error, user} ->
-  	    send_registry_error(conn, changeset)
-  	  :else ->
-  	    render(conn, "register.html", user: changeset)
-    end
-  end
 
   def register(conn, _) do
   	changeset = User.changeset(%User{})

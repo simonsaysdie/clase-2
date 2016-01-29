@@ -1,0 +1,21 @@
+<head>
+<body>
+
+	<%= form_for @bank, bank_path(@conn, :register), fn f -> %>
+  		First name:<br>
+  		<%= text_input f, :name %><br>
+	<br>
+	<br>
+  		number:<br>
+  		<%= text_input f, :phone, type: "number" %>
+	<br>
+	<br>
+        <%= checkbox f, :has_trust %> do you trust the bank?
+	<br>
+	<br>
+	   
+    <%= submit "Register!" %>  
+	<% end %>
+
+</body>
+</head>
